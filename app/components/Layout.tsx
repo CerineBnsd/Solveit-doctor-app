@@ -2,41 +2,19 @@ import React, { ReactNode } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
 import Box from '@material-ui/core/Box';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import DashboardIcon from '@material-ui/icons/CalendarToday';
-import ShoppingCartIcon from '@material-ui/icons/People';
-import PeopleIcon from '@material-ui/icons/Folder';
-
-import routes from '../constants/routes.json';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" to="https://material-ui.com/">
-        Built by SolveIT
-      </Link>
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Footer from './Footer';
+import Sidebar from './Sidebar';
 
 type Props = {
   children: ReactNode;
@@ -137,8 +115,10 @@ const Layout = (props: Props) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
+        color="transparent"
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
+        style={{ boxShadow: 'none' }}
       >
         <Toolbar className={classes.toolbar}>
           <IconButton
@@ -155,70 +135,30 @@ const Layout = (props: Props) => {
           </IconButton>
           <Typography
             component="h1"
-            variant="h6"
+            variant="h4"
             color="inherit"
             noWrap
             className={classes.title}
           >
-            Compte Medecin
+            Liste des patients
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
+          <IconButton
+            edge="end"
+            aria-label="account of current user"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        classes={{
-          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbarIcon}>
-          <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            Hopital
-          </Typography>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          <div>
-            <ListItem button>
-              <ListItemIcon>
-                <DashboardIcon />
-              </ListItemIcon>
-              <Link to={routes.COUNTER}>
-                <ListItemText primary="Consultations" />
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <Link to={routes.HOME} style={{ color: 'black' }}>
-                <ListItemText primary="Patients" />
-              </Link>
-            </ListItem>
-            <ListItem button>
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText primary="Signal " />
-            </ListItem>
-          </div>
-        </List>
-        <Divider />
-      </Drawer>
+
+      <Sidebar open={open} handleDrawerClose={handleDrawerClose} />
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
@@ -226,7 +166,7 @@ const Layout = (props: Props) => {
             {children}
           </Grid>
           <Box pt={4}>
-            <Copyright />
+            <Footer />
           </Box>
         </Container>
       </main>
