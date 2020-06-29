@@ -140,7 +140,7 @@ const Layout = (props: Props) => {
             noWrap
             className={classes.title}
           >
-            Liste des patients
+            {`   `}
           </Typography>
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">

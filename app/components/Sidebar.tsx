@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     position: 'relative',
     whiteSpace: 'nowrap',
+    backgroundColor: '#F6F6F6',
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
@@ -82,7 +83,6 @@ export default function Sidebar({ open, handleDrawerClose }: Props) {
   const classes = useStyles();
   return (
     <Drawer
-      style={{ backgroundColor: '#F5F5F5' }}
       variant="permanent"
       classes={{
         paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
@@ -134,20 +134,23 @@ export default function Sidebar({ open, handleDrawerClose }: Props) {
       <Divider />
       <List>
         <div>
-          <ListItem button>
-            <ListItemIcon>
-              <DashboardIcon />
-            </ListItemIcon>
-            <Link to={routes.HOME} style={{ color: 'black' }}>
-              <ListItemText primary="Consultations" />
-            </Link>
-          </ListItem>
+          <Link to={routes.CONSULT}>
+            <ListItem button>
+              <ListItemIcon>
+                <DashboardIcon />
+              </ListItemIcon>
+              <ListItemText
+                primary="Consultations"
+                style={{ color: 'black' }}
+              />
+            </ListItem>
+          </Link>
           <ListItem button>
             <ListItemIcon>
               <ShoppingCartIcon />
             </ListItemIcon>
-            <Link to={routes.HOME} style={{ color: 'black' }}>
-              <ListItemText primary="Patients" />
+            <Link to={routes.PATIENTS}>
+              <ListItemText primary="Patients" style={{ color: 'black' }} />
             </Link>
           </ListItem>
           <ListItem button>
@@ -165,7 +168,7 @@ export default function Sidebar({ open, handleDrawerClose }: Props) {
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
-            <Link to={routes.HOME} style={{ color: 'black' }}>
+            <Link to={routes.PATIENTS}>
               <ListItemText primary="Options" />
             </Link>
           </ListItem>
@@ -173,7 +176,7 @@ export default function Sidebar({ open, handleDrawerClose }: Props) {
             <ListItemIcon>
               <ShoppingCartIcon />
             </ListItemIcon>
-            <Link to={routes.HOME} style={{ color: 'black' }}>
+            <Link to={routes.PATIENTS}>
               <ListItemText primary="Centre d'aide" />
             </Link>
           </ListItem>

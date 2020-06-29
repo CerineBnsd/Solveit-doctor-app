@@ -3,15 +3,15 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import routes from './constants/routes.json';
 import App from './containers/App';
-import HomePage from './containers/HomePage';
-import CounterPage from './containers/CounterPage';
+import PatientsPage from './containers/PatientsPage';
+import ConsultPage from './containers/ConsultPage';
 
 export default function Routes() {
   return (
     <App>
       <Switch>
-        <Route path={routes.COUNTER} component={CounterPage} />
-        <Route path={routes.HOME} component={HomePage} />
+        <Route path={routes.CONSULT} component={ConsultPage} />
+        <Route path={routes.PATIENTS} component={PatientsPage} />
       </Switch>
     </App>
   );
