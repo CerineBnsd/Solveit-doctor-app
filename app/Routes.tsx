@@ -5,6 +5,7 @@ import routes from './constants/routes.json';
 import App from './containers/App';
 import PatientsPage from './containers/PatientsPage';
 import ConsultPage from './containers/ConsultPage';
+import DpmiPage from './containers/DpmiPage';
 
 export default function Routes() {
   return (
@@ -12,6 +13,7 @@ export default function Routes() {
       <Switch>
         <Route path={routes.CONSULT} component={ConsultPage} />
         <Route path={routes.PATIENTS} component={PatientsPage} />
+        <Route path={routes.DPMI} component={DpmiPage} />
       </Switch>
     </App>
   );

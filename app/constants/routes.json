@@ -1,4 +1,5 @@
 {
   "PATIENTS": "/patients",
-  "CONSULT": "/consultation"
+  "CONSULT": "/consultation",
+  "DPMI": "/dpmi"
 }

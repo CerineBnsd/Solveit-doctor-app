@@ -7,6 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Link } from 'react-router-dom';
+import routes from '../constants/routes.json';
 
 const useStyles = makeStyles({
   table: {
@@ -80,13 +82,15 @@ export default function PatientsList() {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.nss} hover>
-              <TableCell component="th" scope="row">
-                {row.nom}
-              </TableCell>
-              <TableCell align="right">{row.nss}</TableCell>
-              <TableCell align="right">{row.telephone}</TableCell>
-              <TableCell align="right">{row.email}</TableCell>
-              <TableCell align="right">{row.action}</TableCell>
+              <Link to={routes.DPMI}>
+                <TableCell component="th" scope="row">
+                  {row.nom}
+                </TableCell>
+                <TableCell align="right">{row.nss}</TableCell>
+                <TableCell align="right">{row.telephone}</TableCell>
+                <TableCell align="right">{row.email}</TableCell>
+                <TableCell align="right">{row.action}</TableCell>
+              </Link>
             </TableRow>
           ))}
         </TableBody>
